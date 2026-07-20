@@ -1,0 +1,28 @@
+# Unity
+[Ll]ibrary/
+[T]emp/
+[O]bj/
+[B]uild/
+[B]uilds/
+[Ll]ogs/
+MemoryCaptures/
+
+# Visual Studio
+*.csproj
+*.sln
+*.user
+*.suo
+*.userprefs
+.vs/
+
+# JetBrains Rider
+.idea/
+*.sln.DotSettings
+
+# macOS
+.DS_Store
+.DS_Store?
+
+# Windows
+Thumbs.db
+Desktop.ini
