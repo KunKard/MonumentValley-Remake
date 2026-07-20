@@ -42,14 +42,14 @@ public class GameMgr2 : MonoBehaviour
     public void rotateRoot2()
     {
         if (isRotation) return;
-        // - ´¥·¢ÊàÅ¦Ðý×ª
+        // - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¦ï¿½ï¿½×ª
             root2.DOComplete();
 
             isRotation = true;
-            // ´´½¨¶¯»­ÐòÁÐ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             Sequence seq = DOTween.Sequence();
 
-            // µÚÒ»²½£ºÌí¼ÓÐý×ª¶¯»­
+            // ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½
             seq.Append(root2.DORotate(new Vector3(0, 90, 0), 0.6f, RotateMode.WorldAxisAdd)
                 .SetEase(Ease.OutBack));
 
@@ -62,7 +62,7 @@ public class GameMgr2 : MonoBehaviour
                 //}
             });
 
-            // Ðý×ªÍê³Éºóµ÷ÓÃ
+            // ï¿½ï¿½×ªï¿½ï¿½Éºï¿½ï¿½ï¿½ï¿½
             seq.AppendCallback(() => {
                 isRotation = false;
                 ChangeCondition(floor * 4 + (count + 1));
@@ -89,11 +89,7 @@ public class GameMgr2 : MonoBehaviour
     }
     public void ChangeCondition(int id)
     {
-        MyCondition condition = conditions[id];
-        for (int i = 0; i <= condition.targets.Count - 1; i++)
-        {
-            condition.walkCubes[i].ChangActive(condition.targets[i]);
-        }
+        ConditionManager.ChangeCondition(conditions, id);
     }
 
     public void UpRoot4()

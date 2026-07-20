@@ -9,6 +9,7 @@ using static MyWalkCube;
 public class MyPlayController : MonoBehaviour
 {
     public bool walking;
+    public event System.Action<bool> OnWalkingChanged;
 
     [Space]
 
@@ -118,6 +119,7 @@ public class MyPlayController : MonoBehaviour
         Sequence s = DOTween.Sequence();
 
         walking = true;
+        OnWalkingChanged?.Invoke(true);
 
         for (int i = finalPath.Count - 1; i >= 0; i--)
         {
@@ -139,6 +141,7 @@ public class MyPlayController : MonoBehaviour
         }
         finalPath.Clear();
         walking = false;
+        OnWalkingChanged?.Invoke(false);
     }
     void RayCastDown()
     {

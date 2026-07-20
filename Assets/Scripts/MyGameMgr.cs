@@ -99,11 +99,7 @@ public class MyGameMgr : MonoBehaviour
     }
     public void ChangeCondition(int id)
     {
-        MyCondition condition = conditions[id];
-        for(int i = 0;i <= condition.targets.Count - 1;i++)
-        {
-            condition.walkCubes[i].ChangActive(condition.targets[i]);
-        }
+        ConditionManager.ChangeCondition(conditions, id);
     }
     public void NextScene()
     {
@@ -111,11 +107,4 @@ public class MyGameMgr : MonoBehaviour
         SceneManager.LoadScene("CloneScene2");
         btn1On = true;
     }
-}
-[System.Serializable]
-public class MyCondition
-{
-    public int conditionID;
-    public List<MyWalkCube> walkCubes;
-    public List<int> targets;
 }
