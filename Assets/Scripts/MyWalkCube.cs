@@ -42,7 +42,7 @@ public class MyWalkCube : MonoBehaviour
         foreach (MyWalkPath p in possiblePaths)
         {
             if (p.target == null)
-                return;
+                continue;
             Gizmos.color = p.active ? Color.black : Color.clear;
             Gizmos.DrawLine(GetWalkPoint(), p.target.GetComponent<MyWalkCube>().GetWalkPoint());
         }

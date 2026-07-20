@@ -30,7 +30,7 @@ public class MyPlayController : MonoBehaviour
     private void Update()
     {
         RayCastDown();
-        //if((MyGameMgr.instance != null && MyGameMgr.instance.isRotation) || (GameMgr2.instance != null && GameMgr2.instance.isRotation)) return;
+        if((MyGameMgr.instance != null && MyGameMgr.instance.isRotation) || (GameMgr2.instance != null && GameMgr2.instance.isRotation)) return;
         if (Input.GetMouseButtonDown(0))
         {
             Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition); RaycastHit mouseHit;
@@ -70,6 +70,7 @@ public class MyPlayController : MonoBehaviour
     }
     void ExploreCube(List<Transform> nextCubes, List<Transform> pastCubes)
     {
+        if (!nextCubes.Any()) return;
         Transform current = nextCubes.First();
         nextCubes.Remove(current);
 
@@ -104,10 +105,10 @@ public class MyPlayController : MonoBehaviour
                 cube = cube.GetComponent<MyWalkCube>().previousBlock;
             else
             {
-                Clear();
+                // 点击的方块不可达，安全退出
+                finalPath.Clear();
                 return;
             }
-                
         }
 
         FollowPath();
